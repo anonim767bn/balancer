@@ -1,0 +1,27 @@
+services:
+  contact-app1:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+
+  contact-app2:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+  
+  contact-app3:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+  
+  group-app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+
+  balancer:
+    image: nginx:alpine3.21
+    ports:
+      - 6080:80
+    volumes:
+      - ./nginx:/etc/nginx/templates

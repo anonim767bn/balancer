@@ -7,9 +7,9 @@ ENV GOCACHE=/root/.cache/go-build
 
 WORKDIR /app
 
-COPY ./go.sum ./go.mod ./
-COPY ./cmd ./cmd
-COPY ./internal ./internal
+COPY ./go.sum ./go.mod /app/
+COPY ./cmd /app/cmd
+COPY ./internal /app/internal
 COPY ./vendor /app/vendor
 
 RUN --mount=type=cache,target="/root/.cache/go-build" \
