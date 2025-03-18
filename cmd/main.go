@@ -8,17 +8,16 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-const port = 6080
-const host = "localhost"
+const port = 7777
+const host = "0.0.0.0"
+
 // const apiPrefix = "/api/v1"
 // const apiGroup = "/group"
 // const apiContact = "/contact"
 
-
 func main() {
 	svc := service.New()
 	api := fiber.New()
-
 
 	api.Get("/", svc.RootHandler)
 	// api.Get(apiPrefix+apiGroup, svc.GroupHandler)

@@ -16,3 +16,4 @@ func (s *Service) RootHandler(ctx *fiber.Ctx) error {
 	ctx.Set("Content-Type", "text/html")
 	return ctx.SendString(`I'm alive, please use <a href="/api/v1/contact">contact api</a> or <a href="/api/v1/group">group api</a>`)
 }
+
