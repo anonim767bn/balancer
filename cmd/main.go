@@ -28,6 +28,15 @@ func main() {
 	api.Get(apiPrefix+apiGroup, svc.GroupListGetHandler)
 	api.Get(apiPrefix+apiGroup+"/:id", svc.GroupGetHandler)
 
+	api.Post(apiPrefix+apiContact, svc.ContactPostHandler)
+	api.Post(apiPrefix+apiGroup, svc.GroupPostHandler)
+
+	api.Delete(apiPrefix+apiContact+"/:id", svc.ContactDeleteHandler)
+	api.Delete(apiPrefix+apiGroup+"/:id", svc.GroupDeleteHandler)
+
+	api.Put(apiPrefix+apiContact+"/:id", svc.ContactPutHandler)
+	api.Put(apiPrefix+apiGroup+"/:id", svc.GroupPutHandler)
+
 	if err := api.Listen(host + ":" + strconv.Itoa(port)); err != nil {
 		log.Fatalln(err)
 	}
