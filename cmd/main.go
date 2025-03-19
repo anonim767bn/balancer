@@ -11,9 +11,10 @@ import (
 const port = 7777
 const host = "0.0.0.0"
 
-// const apiPrefix = "/api/v1"
-// const apiGroup = "/group"
-// const apiContact = "/contact"
+const apiPrefix = "/api/v1"
+
+const apiGroup = "/group"
+const apiContact = "/contact"
 
 func main() {
 	svc := service.New()
@@ -21,7 +22,11 @@ func main() {
 
 	api.Get("/", svc.RootHandler)
 	// api.Get(apiPrefix+apiGroup, svc.GroupHandler)
-	// api.Get(apiPrefix+apiContact, svc.ContactHandler)
+	api.Get(apiPrefix+apiContact, svc.ContactListGetHandler)
+	api.Get(apiPrefix+apiContact+"/:id", svc.ContactGetHandler)
+
+	api.Get(apiPrefix+apiGroup, svc.GroupListGetHandler)
+	api.Get(apiPrefix+apiGroup+"/:id", svc.GroupGetHandler)
 
 	if err := api.Listen(host + ":" + strconv.Itoa(port)); err != nil {
 		log.Fatalln(err)
